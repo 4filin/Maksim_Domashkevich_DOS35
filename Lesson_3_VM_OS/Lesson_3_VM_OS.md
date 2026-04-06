@@ -8,78 +8,78 @@
 
 1. Создаем виртуальный диск в среде виртуализации Hyper-V 
    
-   ![step1](/temp/step1.png))
+   ![step1](temp/step1.png)
 
 * результат созданный диск 
 
-   ![step2](/temp/step2.png)
+   ![step2](temp/step2.png)
 
 2. Создаем виртуальную машину в среде виртуализации Hyper-V 
 
-   ![step3](/temp/step3.png)
+   ![step3](temp/step3.png)
 
 * выбираем ранее созданный диск
 
-    ![step4](/temp/step4.png)  
+    ![step4](temp/step4.png)  
 
 * Результат виртуальная машина готова
 
-    ![step5](/temp/step5.png)
+    ![step5](temp/step5.png)
 
 3. Добавляем установочный образ Ubuntu
 
-    ![step6](/temp/step6.png)
+    ![step6](temp/step6.png)
 * устанавливаем приритет запуска с установочного диска 
   
-    ![step7](/temp/step7.png)
+    ![step7](temp/step7.png)
 
 * запускаем виртуальную машину
       
-    ![step8](/temp/step8.png)
+    ![step8](temp/step8.png)
 
 * результат видим экран GRUB 
        
-    ![step9](/temp/step9.png)
+    ![step9](temp/step9.png)
 
 4. Приступаем к выбору установки и первичной настройке OS
 
 * экран выбора типа установки стандарт или индивидуальная 
        
-    ![step10](/temp/step10.png)
+    ![step10](temp/step10.png)
 
 5. Настрока разделов диска виртуальной машины
    * выбираем ручное управление диском 
  
-    ![step10](/temp/step10.png) 
+    ![step10](temp/step10.png) 
 
 * разделяем обрласти диска выделяем /home в отдельный диск 
   
-    ![step11](/temp/step11.png)  
+    ![step11](temp/step11.png)  
 
 * выделяем для /home 5gb места от доступного и монтируем  диск  
 
-    ![step12](/temp/step12.png)
+    ![step12](temp/step12.png)
 
 * оставшееся место отдаем под главный каталог / и монтируем диск 
 
-     ![step13](/temp/step13.png)
+     ![step13](temp/step13.png)
 
 * создаем пользователя и задаем пароль 
   
-     ![step14](/temp/step14.png)
+     ![step14](temp/step14.png)
 
 * устанавливаем SSH server 
 
-     ![step15](/temp/step15.png)
+     ![step15](temp/step15.png)
 
 * ждем пока система установиться
 
-     ![step16](/temp/step16.png)
+     ![step16](temp/step16.png)
 
 * Ubuntu установлен и готов к работе      
 
-     ![step17](/temp/step17.png)
+     ![step17](temp/step17.png)
 
 *  наши разделы на диске распределены и папка /home смонтирована в отдельный раздел 
   
-     ![step18](/temp/step18.png)
+     ![step18](temp/step18.png)
