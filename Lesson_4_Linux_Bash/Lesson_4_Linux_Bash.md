@@ -17,5 +17,5 @@
          ![step5](./temp/step5.png)            
     содержимое файла после команды 
     dpkg --get-selections > installed_packages.txt  
-         ![step6](./temp/step6.png)            
+      
 
