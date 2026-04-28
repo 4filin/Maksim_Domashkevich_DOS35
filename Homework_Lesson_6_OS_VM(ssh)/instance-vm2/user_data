@@ -1,0 +1,82 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    hostname: vm2                             
+    username: maksim                           
+    
+  ssh:
+    install-server: true
+    authorized-keys:
+      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOKpJCUJen7GAGeRL88rFrfDaQuBYrbYiPQUHEaXpd2p massimo@MWS"
+  locale: en_US.UTF-8
+  keyboard:
+    layout: us
+  network:
+    version: 2
+    ethernets:
+      eth0:
+        addresses:
+          - 10.0.0.20/24                      
+        nameservers:
+          addresses: [8.8.8.8, 8.8.4.4]   
+  storage:
+    version: 1
+    config:
+      - type: disk
+        id: disk0
+        ptable: gpt
+        wipe: superblock-recursive
+        grub_device: true
+      - type: partition
+        id: efi-part
+        device: disk0
+        size: 512M
+        flag: boot
+        number: 1
+      - type: partition
+        id: root-part
+        device: disk0
+        size: 3584M         
+        number: 2
+
+# /additional block for home folder 
+
+      - type: partition         
+        id: home-part
+        device: disk0
+        size: 1G             
+        number: 3
+      - type: format
+        id: efi-fmt
+        volume: efi-part
+        fstype: fat32
+        label: EFI
+      - type: format
+        id: root-fmt
+        volume: root-part
+        fstype: ext4
+        label: root
+# /additional block for home folder 
+      - type: format
+        id: home-fmt
+        volume: home-part
+        fstype: ext4
+        label: home
+      - type: mount
+        id: efi-mnt
+        device: efi-fmt
+        path: /boot/efi
+      - type: mount
+        id: root-mnt
+        device: root-fmt
+        path: /
+      - type: mount
+        id: home-mnt
+        device: home-fmt
+        path: /home
+    swap: { size: 0 }
+  packages:
+    - openssh-server
+  late-commands:
+    - echo 'VM2 gotova, proveriay'
