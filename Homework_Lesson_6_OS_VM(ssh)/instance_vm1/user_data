@@ -1,21 +1,27 @@
 #cloud-config
 autoinstall:
   version: 1
+
   identity:
+    hostname: vm1
     username: maksim
-    password: "Pa$4word"
+    password: "0ec73f37e6356e457dc576e735a1c757de3e6f639af364605d366106e672f85850a6c7015b9d5d07eeb7d81dadd86aeb8930a7d634d0c3d0f736c6ff5a4a540d"
+
   ssh:
     install-server: true
     authorized-keys:
       - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOKpJCUJen7GAGeRL88rFrfDaQuBYrbYiPQUHEaXpd2p massimo@MWS
+
   locale: en_US.UTF-8
   keyboard:
     layout: us
+
   network:
     version: 2
     ethernets:
       eth0:
         dhcp4: true
+
   storage:
     version: 1
     config:
@@ -23,50 +29,59 @@ autoinstall:
         id: disk0
         ptable: gpt
         wipe: superblock-recursive
-        grub_device: true
+
       - type: partition
         id: efi-part
         device: disk0
         size: 512M
-        flag: boot
-        number: 1
-      - type: partition
-        id: root-part
-        device: disk0
-        size: 3584M
-        number: 2
+        flag: [esp, boot]      
+        grub_device: true       
+
       - type: partition
         id: home-part
         device: disk0
-        size: 1G
-        number: 3
+        size: 1G                
+
+      - type: partition
+        id: root-part
+        device: disk0
+        size: -1             
+
       - type: format
         id: efi-fmt
         volume: efi-part
         fstype: fat32
         label: EFI
-      - type: format
-        id: root-fmt
-        volume: root-part
-        fstype: ext4
-        label: root
+
       - type: format
         id: home-fmt
         volume: home-part
         fstype: ext4
         label: home
+
+      - type: format
+        id: root-fmt
+        volume: root-part
+        fstype: ext4
+        label: root
+
       - type: mount
         id: efi-mnt
         device: efi-fmt
         path: /boot/efi
-      - type: mount
-        id: root-mnt
-        device: root-fmt
-        path: /
+
       - type: mount
         id: home-mnt
         device: home-fmt
         path: /home
-    swap: { size: 0 }
+
+      - type: mount
+        id: root-mnt
+        device: root-fmt
+        path: /
+
+    swap:
+      size: 0  
+
   packages:
     - openssh-server
