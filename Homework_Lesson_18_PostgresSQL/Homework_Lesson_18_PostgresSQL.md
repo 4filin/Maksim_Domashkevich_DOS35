@@ -8,6 +8,6 @@
     ![step1](./temp/step1.png)
 4. Разворачиваю Postgres на всех машинах
     ![step3](./temp/step3.png)
-5. Разварачиваю Patroni и после 8 часов битв и страданий 
+5. Разварачиваю Patroni и после 3 часов битв и страданий 
     ![step4](./temp/step4.png)   
    
