@@ -12,4 +12,4 @@
 6. Проверяю 
    ![step6](./temp/step6.png) 
 7. Останавливаю и удаляю контенер 
-   ![step7](./temp/step7.png)          
+   ![step7](./temp/step7.png)    
