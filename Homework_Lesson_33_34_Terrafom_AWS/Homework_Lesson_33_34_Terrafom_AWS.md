@@ -42,5 +42,24 @@
        ![step16](./temp/step16.png) 
 
 ## Создание RDS 
-                 
 
+1. Добавляю к Sequrity Group возможность доступа к RDS по порту 3306
+   
+      aws ec2 authorize-security-group-ingress --group-id sg-01f1ff2cd56a95033 --protocol tcp --port 3306 --cidr 0.0.0.0/0
+
+      ![step18](./temp/step18.png) 
+      ![step19](./temp/step19.png) 
+2. Создаю RDS инстанс
+
+      aws rds create-db-instance --db-instance-identifier stadydb --db-instance-class db.t3.micro --engine mysql --master-username admin --master-user-password Password123 --allocated-storage 5 --publicly-accessible --vpc-security-group-ids sg-01f1ff2cd56a95033
+      ![step20](./temp/step20.png)
+3. Создаем резервирование для DB
+      aws rds create-db-snapshot --db-instance-identifier stadydb --db-snapshot-identifier stadydbsnapshot
+      ![step21](./temp/step21.png)
+      ![step22](./temp/step22.png)
+
+4. Востановление DB
+      aws rds restore-db-instance-from-db-snapshot --db-instance-identifier stadydb-restored --db-snapshot-identifier stadydbsnapshot 
+      ![step23](./temp/step23.png)
+5. Проверяю подключение к DB
+      ![step24](./temp/step24.png)  
