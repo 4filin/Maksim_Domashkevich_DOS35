@@ -28,5 +28,19 @@
 6. Подключаюсь к инстансу со своей машины
       ![step11](./temp/step11.png)
       также  проверяю через lsblk что к VM подключены два диска 
-       ![step11](./temp/step12.png)
+       ![step12](./temp/step12.png)
     
+## Создание S3 бакета и загрузка файла 
+1. Создаю бакет S3 
+      aws s3 mb s3://maksim-study-bucket --region us-west-1
+       ![step13](./temp/step13.png)
+       ![step14](./temp/step14.png)
+2. Создаю и преедаю в бакет несколько файлов
+       ![step15](./temp/step15.png)      
+3. Проверяю наличие файлов
+       ![step17](./temp/step17.png) 
+       ![step16](./temp/step16.png) 
+
+## Создание RDS 
+                 
+
